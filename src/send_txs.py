@@ -22,7 +22,7 @@ nonce1 = w3.eth.getTransactionCount(MY_ADDRESS)
 nonce2 = w3.eth.getTransactionCount(NON_OWNER_ADDRESS)
 
 
-def send_transactions():
+def send_transaction_from_owner():
     # build transaction
     pause_tx = hack_me_contract.functions.callSensitiveFunction().buildTransaction(
         {"chainId": chain_id, "from": MY_ADDRESS, "nonce": nonce1}
@@ -40,7 +40,7 @@ def send_transactions():
     pause_tx_receipt = w3.eth.wait_for_transaction_receipt(send_pause_tx)
 
 
-def send_transaction_that_triggers_alert():
+def send_transaction_from_non_owner():
     ### call tx that lets you become owner
     # build transaction
     exploit_tx = hack_me_contract.functions.vulnerableFunction().buildTransaction(
@@ -76,8 +76,8 @@ def send_transaction_that_triggers_alert():
     pause_tx_receipt = w3.eth.wait_for_transaction_receipt(send_pause_tx)
 
 
-send_transactions()
+send_transaction_from_owner()
 print("Owner tx sent...")
 
-send_transaction_that_triggers_alert()
+send_transaction_from_non_owner()
 print("Hacker tx sent...")

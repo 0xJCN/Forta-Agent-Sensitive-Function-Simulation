@@ -68,7 +68,7 @@ hack_me_contract = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
 print(f"Owner of the contract: {hack_me_contract.functions.owner().call()}")
 
 
-# write contract address to address
+# write contract address to address.txt
 with open("./src/address.txt", "w") as file:
     file.write(tx_receipt.contractAddress)
 file.close()
