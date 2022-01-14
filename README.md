@@ -17,7 +17,7 @@ There is a contract that has a sensitive function that should only be called by 
 
 ## Setup
 
-You will need to use two ethereum addresses to execute the necassary scripts. You will paste your addresses in `./src/constants.py` for the variables `MY_ADDRESS` and `NON_OWNER_ADDRESS`. You will also need to put your private keys for those addresses in a .env file:
+You will need to use two ethereum addresses to execute the necessary scripts. You will paste your addresses in `./src/constants.py` for the variables `MY_ADDRESS` and `NON_OWNER_ADDRESS`. You will also need to put your private keys for those addresses in a .env file:
 ```
 # this will be the owner address
 export PRVATE_KEY1 ="[Private_key]"
@@ -26,7 +26,7 @@ export PRVATE_KEY2 ="[Private_key]"
 ``` 
 **the transaction_event object returns non checksum addresses, therefore your address for the `MY_ADDRESS` variable must be a non checksum address (lower case)**
 
-You will also need to get a RPC URL for Rinkeby testnet. I suggest Alchemy. You will then paste that url in the first line of the forta.config.json file:
+You will also need to get an RPC URL for Rinkeby testnet. I suggest Alchemy. You will then paste that url in the first line of the forta.config.json file:
 ```
 {
   "jsonRpcUrl": "[YOUR-URL]",                      /* JSON-RPC url for running agent during development e.g. wss://mainnet.infura.io/ws/v3/YOUR_API_KEY */
@@ -46,11 +46,11 @@ You will also need to get a RPC URL for Rinkeby testnet. I suggest Alchemy. You 
 
 You will do three things to see your agent report the two alerts listed in the `Description`.
 
-1. Run the deploy.py script **make sure script completed (wait for output) before executing step3**
+1. Run the deploy.py script: **make sure script completes (wait for output) before executing step 3**
 2. Run the following command in a separate terminal window: `npm start`
 3. Run the send_txs.py script
 
-You will now monitor the output in the terminal window from step number 2. It will take a couple of blocks, but you will see your agent report a medium severity alert (function call from the owner) and then it will report a critical severity alert (non owner has exploited contract and called sensitive function).
+You will now monitor the output in the terminal window from step 2. It will take a couple of blocks, but you will see your agent report a medium severity alert (function call from the owner) and then it will report a critical severity alert (non owner has exploited contract and called sensitive function).
 
-You can also run unit tests in `agent_test.py` with the following command: `npm test`
+You can also run the unit tests in `agent_test.py` with the following command: `npm test`
 
